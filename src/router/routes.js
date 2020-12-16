@@ -55,7 +55,7 @@ export default new Router({
 			beforeEnter: ifAuthenticated
 		},
 		{
-			path:'/signup',
+			path:'/register',
 			component:Signup,
 			name:'Signup',
 			meta: {title: 'Signup'},

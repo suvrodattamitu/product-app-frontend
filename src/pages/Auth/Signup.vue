@@ -52,9 +52,12 @@
                     .then(response => {
 
                         if(response.data.token !== null) {
+
                             //signup done
                             localStorage.setItem( "user", response.data.token )
-                            this.$router.push("/");
+                            this.$store.dispatch("authentication_action",true)
+                            this.$router.push("/")
+
                         }else {
                             //error
                         }

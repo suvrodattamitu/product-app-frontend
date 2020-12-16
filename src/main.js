@@ -8,6 +8,16 @@ window.axios = require('axios')
 //it is for to support vue routes 
 import router from "./router/routes"
 
+//support vuex
+import Vuex from 'vuex';
+Vue.use(Vuex);
+
+import storedata from './store/stores';
+
+const store = new Vuex.Store(
+  storedata
+);
+
 router.beforeEach((to, from, next) => {
 
     if(to.meta){
@@ -23,6 +33,7 @@ router.beforeEach((to, from, next) => {
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-  router
+  render: productApp => productApp(App),
+  router,
+  store
 }).$mount('#app')

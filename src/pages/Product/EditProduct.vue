@@ -21,6 +21,7 @@
             <div class="form-group">
                 <label for="image">Image</label>
                 <input type="file" class="form-control" id="file" @change="onInputChange($event)" />
+                <img v-if="show_image" :src="show_image" alt="" height="80" width="80">
             </div><br>
 
             <button type="submit" class="btn btn-info" @click.prevent="updateProduct">Update</button>
@@ -35,11 +36,13 @@
 
         data() {
             return {
+                file_directory: '',
                 title: '',
                 description: '',
                 price: '',
                 image_file: null,
-                productId: this.$route.params.product_id
+                productId: this.$route.params.product_id,
+                show_image:null
             }
         },
 
@@ -59,11 +62,17 @@
                     .then(response => {
 
                         if( response.data && response.data.product ) {
+
+                            this.file_directory = response.data.file_directory
+
                             let product = response.data.product
                             this.title = product.title
                             this.description = product.description
                             this.price = product.price
-                            //console.log(response.data)
+                            if( product.image ) {
+                                this.show_image = this.file_directory+'/'+product.image
+                            }
+                            
                         }
 
                     })
@@ -134,10 +143,16 @@
                 let reader = new FileReader()
                 reader.onload = (event) => {
                     // The file's text will be printed here
-                    that.changed_image = event.target.result
+                    that.show_image = event.target.result
                 }
                 reader.readAsDataURL(file)
             },
+
+            // updateImage() {
+
+            //     let img = this.show_image;
+                
+            // }
 
         },
 

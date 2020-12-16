@@ -2,19 +2,19 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
 
-            <div v-if="isAuthUser">
+            <div v-if="isAuthenticated">
                 <router-link class="navbar-brand" to="/">Home</router-link>
             </div>
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav custom-right pull-right">
-                    <li class="nav-item" v-if="!isAuthUser">
+                    <li class="nav-item" v-if="!isAuthenticated">
                         <router-link class="nav-link active" aria-current="page" to="/login">Login</router-link>
                     </li>
-                    <li class="nav-item" v-if="!isAuthUser">
-                        <router-link class="nav-link" to="/signup">Signup</router-link>
+                    <li class="nav-item" v-if="!isAuthenticated">
+                        <router-link class="nav-link" to="/register">Signup</router-link>
                     </li>
-                    <li class="nav-item" v-if="isAuthUser">
+                    <li class="nav-item" v-if="isAuthenticated">
                         <a href="#" class="nav-link" @click.prevent="logoutUser">Logout</a>
                     </li>
                 </ul>
@@ -40,11 +40,19 @@ export default {
     methods: {
 
         logoutUser() {
+
             localStorage.removeItem('user')
-            this.isAuthUser = false
+            this.$store.dispatch("authentication_action",false)
             this.$router.push("/login")
+
         }
 
+    },
+
+    computed: {
+        isAuthenticated() {
+            return this.$store.getters.isAuthenticated
+        }
     }
 
 }

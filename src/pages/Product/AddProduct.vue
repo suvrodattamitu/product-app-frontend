@@ -18,6 +18,7 @@
             <div class="form-group">
                 <label for="image">Image</label>
                 <input type="file" class="form-control" id="file" @change="onInputChange($event)" />
+                <img v-if="show_image" :src="show_image" height="80" width="80" />
             </div><br>
 
             <button type="submit" class="btn btn-info" @click.prevent="addProduct">Add</button>
@@ -35,7 +36,8 @@
                 title: '',
                 description: '',
                 price: '',
-                image_file: null
+                image_file: null,
+                show_image: null
             }
         },
 
@@ -86,7 +88,7 @@
                 let reader = new FileReader();
                 reader.onload = (event) => {
                     // The file's text will be printed here
-                    that.changed_image = event.target.result;
+                    that.show_image = event.target.result;
                 };
                 reader.readAsDataURL(file);
             },

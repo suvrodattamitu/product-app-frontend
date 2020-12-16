@@ -22,7 +22,10 @@
                         <th scope="row">{{ product.id }}</th>
                         <td>{{ product.title }}</td>
                         <td>{{ product.description }}</td>
-                        <td>@mdo</td>
+                        <td>
+                            <img v-if="product.image" height="80" width="80" :src="file_directory+'/'+product.image" />
+                            <p v-else> No Image </p>
+                        </td>
                         <td>{{ product.price }}</td>
                         <td class="custom-btn-group">
                             <button type="button" class="btn btn-sm btn-success" @click.prevent="redirectToEdit(product.id)">Edit</button>
@@ -48,7 +51,8 @@
 
         data() {
             return {
-               products:[]
+                file_directory: '',
+                products:[]
             }
         },
 
@@ -64,6 +68,7 @@
 
                         if( response.data.products ) {
                             this.products = response.data.products
+                            this.file_directory = response.data.file_directory
                         }
 
                         console.log(response.data)
