@@ -1,9 +1,14 @@
 import Vue from "vue"
 import Router from "vue-router"
 
-import Home from '../pages/Products'
-import Signup from '../pages/Signup'
-import Login from '../pages/Login'
+//products
+import Home from '../pages/Product/AllProducts'
+import AddProduct from '../pages/Product/AddProduct'
+import EditProduct from '../pages/Product/EditProduct'
+
+//auth
+import Signup from '../pages/Auth/Signup'
+import Login from '../pages/Auth/Login'
 
 Vue.use(Router)
 
@@ -34,6 +39,20 @@ export default new Router({
 			meta: {title: 'Home'},
 			beforeEnter: ifAuthenticated
 
+		},
+		{
+			path:'/add-product',
+			component:AddProduct,
+			name:'AddProduct',
+			meta: {title: 'Add Product'},
+			beforeEnter: ifAuthenticated
+		},
+		{
+			path:'/edit-product/:product_id',
+			component:EditProduct,
+			name:'EditProduct',
+			meta: {title: 'Edit Product'},
+			beforeEnter: ifAuthenticated
 		},
 		{
 			path:'/signup',

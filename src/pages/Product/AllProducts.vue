@@ -2,7 +2,10 @@
     <div class="content-body">
        <h4>Products</h4>
 
-       <div v-if="products.length">
+       <div v-if="products.length" class="products-table">
+
+           <router-link class="btn btn-sm btn-primary redirect-button" to="/add-product">Add Product</router-link>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -22,7 +25,7 @@
                         <td>@mdo</td>
                         <td>{{ product.price }}</td>
                         <td class="custom-btn-group">
-                            <button type="button" class="btn btn-sm btn-success">Edit</button>
+                            <button type="button" class="btn btn-sm btn-success" @click.prevent="redirectToEdit(product.id)">Edit</button>
                             <button type="button" class="btn btn-sm btn-danger" @click.prevent="deleteProduct(product.id)">Delete</button>
                         </td>
                     </tr>
@@ -32,6 +35,7 @@
 
         <div v-else>
             <p>No products found!! Please add one</p>
+            <router-link class="btn btn-sm btn-primary" to="/add-product">Add Product</router-link>
         </div>
 
     </div>
@@ -104,6 +108,10 @@
                         
                     });
 
+            },
+
+            redirectToEdit( productId ) {
+                this.$router.push(`/edit-product/${productId}`);
             }
 
         },
