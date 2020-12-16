@@ -31,7 +31,7 @@
 
             signInUser() {
                 
-                const url = "http://127.0.0.1:8000/api/user/login"
+                const url = "/login"
 
                 const data = {
                     email: this.email,

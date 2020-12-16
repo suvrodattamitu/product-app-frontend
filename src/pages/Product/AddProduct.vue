@@ -54,7 +54,7 @@
                 formData.append("price", this.price);
                 formData.append("token", token);
 
-                const url = "http://127.0.0.1:8000/api/user/product/add"
+                const url = "/product/add"
 
                 const headers = {
                     "Content-Type": "application/json",
@@ -93,10 +93,6 @@
                 reader.readAsDataURL(file);
             },
 
-        },
-
-        mounted() {
-            
         }
     
     }

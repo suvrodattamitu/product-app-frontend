@@ -36,7 +36,7 @@
 
             signUpUser() {
 
-                const url = "http://127.0.0.1:8000/api/user/register"
+                const url = "/register"
 
                 const data = {
                     name: this.name,
@@ -71,7 +71,7 @@
                     })
                     .then(() => {
                         
-                    });
+                    })
 
 
             }

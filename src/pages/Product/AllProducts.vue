@@ -61,7 +61,7 @@
             getProducts() {
 
                 let token = localStorage.getItem('user')
-                let url = 'http://127.0.0.1:8000/api/user/products/'+ token
+                let url = '/products/'+ token
                 
                 axios.get(url)
                     .then(response => {
@@ -82,7 +82,7 @@
                     })
                     .then(() => {
                         
-                    });
+                    })
 
             },
 
@@ -90,7 +90,7 @@
 
                 let token = localStorage.getItem('user')
 
-                const url = "http://127.0.0.1:8000/api/user/product/delete/"+productId
+                const url = "/product/delete/"+productId
 
                 const headers = {
                     "Content-Type": "application/json",
@@ -111,12 +111,12 @@
                     })
                     .then(() => {
                         
-                    });
+                    })
 
             },
 
             redirectToEdit( productId ) {
-                this.$router.push(`/edit-product/${productId}`);
+                this.$router.push(`/edit-product/${productId}`)
             }
 
         },

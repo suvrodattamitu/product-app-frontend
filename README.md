@@ -1,4 +1,4 @@
-# real-world-vue
+# product-app-frontend
 
 ## Project setup
 ```
@@ -20,5 +20,14 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Some Key Notes
+
+-Must match api url with your backend server
+
+Example:
+
+case 1. If your backend server is www.example.dev then
+window.axios.defaults.baseURL = 'www.example.dev/api/user' ( main.js -> line :7 )
+
+case 2. If your backend server is http://127.0.0.1:8000 then
+window.axios.defaults.baseURL = 'http://127.0.0.1:8000/api/user' ( main.js -> line :7 )

@@ -2,21 +2,21 @@ export default{
 
     state: {
         
-        authenticated: localStorage.getItem("user") || "",
+        authenticated: localStorage.getItem("user") || ""
         
     },
 
-    getters:{
+    getters: {
 
-	  	isAuthenticated(state){
-            return state.authenticated;
-        },
+	  	isAuthenticated(state) {
+            return state.authenticated
+        }
          
     },
 
-    actions:{
+    actions: {
 
-        authentication_action(context,payload){
+        authentication_action(context,payload) {
             context.commit('update_authentication',payload)
         }
 
@@ -24,8 +24,8 @@ export default{
 
     mutations: {
 
-        update_authentication(state,data){
-            return state.authenticated = data;
+        update_authentication(state,data) {
+            return state.authenticated = data
         }
 
     }

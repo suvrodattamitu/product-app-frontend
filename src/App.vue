@@ -19,13 +19,15 @@
 </template>
 
 <script>
-
 import Nav from './partials/Nav'
 
 export default {
-  name: 'App',
-  components: {
-    Nav
-  }
+
+    name: 'App',
+    
+    components: {
+      Nav
+    }
+
 }
 </script>

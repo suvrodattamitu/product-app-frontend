@@ -51,7 +51,7 @@
             getProduct() {
 
                 let token = localStorage.getItem('user')
-                let url = `http://127.0.0.1:8000/api/user/product/edit/${this.productId}/${token}`
+                let url = `/product/edit/${this.productId}/${token}`
                 
                 const headers = {
                     "Content-Type": "application/json",
@@ -84,7 +84,7 @@
                     })
                     .then(() => {
                         
-                    });
+                    })
 
             },
 
@@ -102,7 +102,7 @@
 
                 console.log(form);
 
-                const url = `http://127.0.0.1:8000/api/user/product/update/${this.productId}`
+                const url = `/product/update/${this.productId}`
 
                 const headers = {
                     "Content-Type": "application/json",
@@ -147,12 +147,6 @@
                 }
                 reader.readAsDataURL(file)
             },
-
-            // updateImage() {
-
-            //     let img = this.show_image;
-                
-            // }
 
         },
 
