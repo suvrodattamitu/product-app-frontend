@@ -71,13 +71,8 @@
                             this.file_directory = response.data.file_directory
                         }
 
-                        console.log(response.data)
-
                     })
                     .catch(error => {
-
-                        //error
-                        console.log(error)
 
                     })
                     .then(() => {
@@ -104,9 +99,6 @@
 
                     })
                     .catch(error => {
-
-                        //error
-                        console.log(error)
 
                     })
                     .then(() => {

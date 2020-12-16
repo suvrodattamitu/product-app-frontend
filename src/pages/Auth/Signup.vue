@@ -5,14 +5,17 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" v-model="name" class="form-control" placeholder="Enter name">
+                <p v-if="errors.name" style="color:red">{{ errors.name[0] }}</p>
             </div><br>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" v-model="email" class="form-control" placeholder="Enter email">
+                <p v-if="errors.email" style="color:red">{{ errors.email[0] }}</p>
             </div><br>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" v-model="password" class="form-control" placeholder="Password">
+                <p v-if="errors.password" style="color:red">{{ errors.password[0] }}</p>
             </div><br>
             <button type="submit" class="btn btn-info" @click.prevent="signUpUser">Signup</button>
         </form>
@@ -28,7 +31,8 @@
             return {
                 name: '',
                 email: '',
-                password: ''
+                password: '',
+                errors: {}
             }
         },
 
@@ -65,9 +69,10 @@
                     })
                     .catch(error => {
 
-                        //error
-                        console.log(error)
-
+                        if( error.response ) {
+                            this.errors = error.response.data.errors
+                        }
+                       
                     })
                     .then(() => {
                         

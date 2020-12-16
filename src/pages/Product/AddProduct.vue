@@ -5,16 +5,18 @@
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" v-model="title" class="form-control" placeholder="Enter title">
+                <p v-if="errors.title" style="color:red">{{ errors.title[0] }}</p>
             </div><br>
             <div class="form-group">
                 <label for="description">Description</label>
                 <input type="text" v-model="description" class="form-control" placeholder="Enter description">
+                <p v-if="errors.description" style="color:red">{{ errors.description[0] }}</p>
             </div><br>
             <div class="form-group">
                 <label for="price">Price</label>
                 <input type="number" v-model="price" class="form-control" placeholder="price">
+                <p v-if="errors.price" style="color:red">{{ errors.price[0] }}</p>
             </div><br>
-
             <div class="form-group">
                 <label for="image">Image</label>
                 <input type="file" class="form-control" id="file" @change="onInputChange($event)" />
@@ -37,7 +39,8 @@
                 description: '',
                 price: '',
                 image_file: null,
-                show_image: null
+                show_image: null,
+                errors:{}
             }
         },
 
@@ -69,8 +72,9 @@
                     })
                     .catch(error => {
 
-                        //error
-                        console.log(error)
+                        if( error.response ) {
+                            this.errors = error.response.data.errors
+                        }
 
                     })
                     .then(() => {
