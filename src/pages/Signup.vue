@@ -35,7 +35,41 @@
         methods: {
 
             signUpUser() {
-                
+
+                const url = "http://127.0.0.1:8000/api/user/register"
+
+                const data = {
+                    name: this.name,
+                    email: this.email,
+                    password: this.password
+                }
+
+                const headers = {
+                    "Content-Type": "application/json"
+                }
+
+                axios.post(url, data, headers)
+                    .then(response => {
+
+                        if(response.data.token !== null) {
+                            //signup done
+                            localStorage.setItem( "user", "Bearer "+response.data.token )
+                            this.$router.push("/");
+                        }else {
+                            //error
+                        }
+
+                    })
+                    .catch(error => {
+
+                        //error
+                        console.log(error)
+
+                    })
+                    .then(() => {
+                        
+                    });
+
 
             }
 

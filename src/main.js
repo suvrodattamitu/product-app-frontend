@@ -1,21 +1,24 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import './assets/styles.scss';
+import './assets/styles.scss'
+
+window.axios = require('axios')
 
 //it is for to support vue routes 
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
+import router from "./router/routes"
 
-import {routes} from './router/routes';
-//make all routes inside this 
-const router = new VueRouter({
-  routes ,
-  mode:'history',
-  scrollBehavior() {
-    return {x: 0, y: 0};
-  },
-});
+router.beforeEach((to, from, next) => {
+
+    if(to.meta){
+        document.title = 'Ninja :: ' + to.meta.title
+    }else{
+        document.title = 'Ninja'
+    }
+
+    next()
+
+})
 
 Vue.config.productionTip = false
 
