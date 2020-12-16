@@ -1,6 +1,9 @@
 <template>
     <div class="content-body">
         <h4>Add Product</h4>
+
+        <router-link class="btn btn-sm btn-primary redirect-button" to="/">All Products</router-link>
+
         <form enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -31,7 +34,7 @@
 <script>
 
     export default {
-        name: 'Signup',
+        name: 'AddProduct',
 
         data() {
             return {

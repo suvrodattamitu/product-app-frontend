@@ -29,7 +29,7 @@
                         <td>{{ product.price }}</td>
                         <td class="custom-btn-group">
                             <button type="button" class="btn btn-sm btn-success" @click.prevent="redirectToEdit(product.id)">Edit</button>
-                            <button type="button" class="btn btn-sm btn-danger" @click.prevent="deleteProduct(product.id)">Delete</button>
+                            <button type="button" class="btn btn-sm btn-warning" @click.prevent="deleteProduct(product.id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -47,7 +47,7 @@
 <script>
 
     export default {
-        name: 'Products',
+        name: 'AllProducts',
 
         data() {
             return {
