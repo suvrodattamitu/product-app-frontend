@@ -1,7 +1,7 @@
 import Vue from "vue"
 import Router from "vue-router"
 
-import Home from '../pages/Product'
+import Home from '../pages/Products'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login'
 

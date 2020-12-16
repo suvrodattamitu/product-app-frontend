@@ -53,7 +53,7 @@
 
                         if(response.data.token !== null) {
                             //signup done
-                            localStorage.setItem( "user", "Bearer "+response.data.token )
+                            localStorage.setItem( "user", response.data.token )
                             this.$router.push("/");
                         }else {
                             //error
